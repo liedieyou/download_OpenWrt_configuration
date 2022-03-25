@@ -81,6 +81,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV#生成时间添加到环境
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -91,9 +92,9 @@ jobs:
 
 
     - name: Upload firmware directory
-      uses: actions/upload-artifact@main      
+      uses: actions/upload-artifact@main
       with:
-        name: OpenWrt_config
+        name: OpenWrt_config${{ env.FILE_DATE }}#两次action生成的文件名不能一样，所以添加环境时间。
         path: openwrt/seed.config
 
 
