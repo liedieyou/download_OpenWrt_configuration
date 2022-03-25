@@ -1,10 +1,10 @@
-由于openwrt云编译使用用ssh修改配置会中道崩殂（似乎是github有意ban掉的），又不想在线下安装linux生成配置文件。所以云编译在图形配置的时候先生成配置文件，再使用该文件进行完整的云编译。
+    由于openwrt云编译使用用ssh修改配置会中道崩殂（似乎是github有意ban掉的），又不想在线下安装linux生成配置文件。所以云编译在图形配置的时候先生成配置文件，再使用该文件进行完整的云编译。
 
 [openwrt编译配置变化文件生成演示](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
 [openwrt编译配置变化文件生成代码说明](https://github.com/danshui-git/shuoming/blob/master/%E6%9C%AC%E5%9C%B0%E6%8F%90%E5%8F%96.config.md)
 
-[完整的云编译代码，这个项目是在完整代码的基础上截取一上半部分，ssh操作在其中说明](https://github.com/P3TERX/Actions-OpenWrt)
+[完整的云编译代码，这个项目是在完整代码的基础上截取其上半部分，ssh操作在其中说明](https://github.com/P3TERX/Actions-OpenWrt)
 
 操作步骤：
 
