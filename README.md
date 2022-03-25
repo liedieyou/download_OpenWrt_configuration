@@ -6,15 +6,18 @@
 
 [完整的云编译代码，这个项目是在完整代码的基础上截取一上半部分，ssh操作在其中说明](https://github.com/P3TERX/Actions-OpenWrt)
 
-cd openwrt && make menuconfig   图形化配置
-make defconfig                  似乎不需要输入该代码
-./scripts/diffconfig.sh > seed.text   生成差异文件
+操作步骤：
 
+1、 cd openwrt && make menuconfig   图形化配置
 
-cat seed.text 直接在屏幕输出差异代码，贴入config文件中
+2、 make defconfig                  似乎不需要输入该代码
+
+2、 ./scripts/diffconfig.sh > seed.text   生成差异文件
+
+3、 cat seed.text 直接在屏幕输出差异代码，贴入config文件中
 OR
 mv seed.text config/  生成text文件上传。
 
-
 遇到的坑：
+
 /openwrt 目录下的文件不能上传，但是目录下的文件夹可以上传，原因未知。所以把生成的差异数据TXT文件转移到另一个文件夹再上传。
