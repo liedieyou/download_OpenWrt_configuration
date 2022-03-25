@@ -15,7 +15,7 @@
 2、 【 ./scripts/diffconfig.sh > seed.text 】   生成差异文件
 
 3、 两者选其一：【 cat seed.text 】 OR 【 mv seed.text config/ 】  
- 直接在屏幕输出差异代码，贴入config文件中 OR 生成text文件上传。
+ 直接在屏幕输出差异代码，复制出来贴到完整云编译的config文件中 OR 生成txt文件转移到config文件夹后再上传出来。
 
 遇到的坑：
 
