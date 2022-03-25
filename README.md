@@ -1,44 +1,18 @@
-**English** | [中文](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
+由于openwrt云编译用ssh修改配置不成功，又不想在线下安装linux。所以云编译先在配置的时候生成配置文件，再进行完整的云编译。
 
-# Actions-OpenWrt
+[openwrt编译配置变化文件生成演示](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
+[openwrt编译配置变化文件生成代码说明](https://github.com/danshui-git/shuoming/blob/master/%E6%9C%AC%E5%9C%B0%E6%8F%90%E5%8F%96.config.md)
+[完整的云编译代码，这个项目是在完整代码的基础上截取一上半部分，ssh操作在其中说明](https://github.com/P3TERX/Actions-OpenWrt)
 
-[![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square&label=LICENSE)](https://github.com/P3TERX/Actions-OpenWrt/blob/master/LICENSE)
-![GitHub Stars](https://img.shields.io/github/stars/P3TERX/Actions-OpenWrt.svg?style=flat-square&label=Stars&logo=github)
-![GitHub Forks](https://img.shields.io/github/forks/P3TERX/Actions-OpenWrt.svg?style=flat-square&label=Forks&logo=github)
+cd openwrt && make menuconfig   图形化配置
+make defconfig                  似乎不需要输入该代码
+./scripts/diffconfig.sh > seed.text   生成差异文件
 
-A template for building OpenWrt with GitHub Actions
 
-## Usage
+cat seed.text 直接在屏幕输出差异代码，贴入config文件中
+OR
+mv seed.text config/  生成text文件上传。
 
-- Click the [Use this template](https://github.com/P3TERX/Actions-OpenWrt/generate) button to create a new repository.
-- Generate `.config` files using [Lean's OpenWrt](https://github.com/coolsnowwolf/lede) source code. ( You can change it through environment variables in the workflow file. )
-- Push `.config` file to the GitHub repository.
-- Select `Build OpenWrt` on the Actions page.
-- Click the `Run workflow` button.
-- When the build is complete, click the `Artifacts` button in the upper right corner of the Actions page to download the binaries.
 
-## Tips
-
-- It may take a long time to create a `.config` file and build the OpenWrt firmware. Thus, before create repository to build your own firmware, you may check out if others have already built it which meet your needs by simply [search `Actions-Openwrt` in GitHub](https://github.com/search?q=Actions-openwrt).
-- Add some meta info of your built firmware (such as firmware architecture and installed packages) to your repository introduction, this will save others' time.
-
-## Credits
-
-- [Microsoft Azure](https://azure.microsoft.com)
-- [GitHub Actions](https://github.com/features/actions)
-- [OpenWrt](https://github.com/openwrt/openwrt)
-- [Lean's OpenWrt](https://github.com/coolsnowwolf/lede)
-- [tmate](https://github.com/tmate-io/tmate)
-- [mxschmitt/action-tmate](https://github.com/mxschmitt/action-tmate)
-- [csexton/debugger-action](https://github.com/csexton/debugger-action)
-- [Cowtransfer](https://cowtransfer.com)
-- [WeTransfer](https://wetransfer.com/)
-- [Mikubill/transfer](https://github.com/Mikubill/transfer)
-- [softprops/action-gh-release](https://github.com/softprops/action-gh-release)
-- [ActionsRML/delete-workflow-runs](https://github.com/ActionsRML/delete-workflow-runs)
-- [dev-drprasad/delete-older-releases](https://github.com/dev-drprasad/delete-older-releases)
-- [peter-evans/repository-dispatch](https://github.com/peter-evans/repository-dispatch)
-
-## License
-
-[MIT](https://github.com/P3TERX/Actions-OpenWrt/blob/main/LICENSE) © [**P3TERX**](https://p3terx.com)
+遇到的坑：
+/openwrt 目录下的文件不能上传，但是目录下的文件夹可以上传，原因未知。所以把生成的差异数据TXT文件转移到另一个文件夹再上传。
