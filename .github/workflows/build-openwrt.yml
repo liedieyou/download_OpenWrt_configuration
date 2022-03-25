@@ -94,7 +94,7 @@ jobs:
       uses: actions/upload-artifact@main
       with:
         name: OpenWrt_configseed
-        path: openwrt/cfe-partition-tag.py
+        path: openwrt/config/seed.config
 
 
     - name: Delete workflow runs
