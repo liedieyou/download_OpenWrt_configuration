@@ -1,4 +1,4 @@
-由于openwrt云编译用ssh修改配置不成功，又不想在线下安装linux。所以云编译先在配置的时候生成配置文件，再进行完整的云编译。
+由于openwrt云编译使用用ssh修改配置会中道崩殂（似乎是github有意ban掉的），又不想在线下安装linux生成配置文件。所以云编译在图形配置的时候先生成配置文件，再使用该文件进行完整的云编译。
 
 [openwrt编译配置变化文件生成演示](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
@@ -8,15 +8,15 @@
 
 操作步骤：
 
-1、 cd openwrt && make menuconfig   图形化配置
+1、 【 cd openwrt && make menuconfig 】   图形化配置
 
-2、 make defconfig                  似乎不需要输入该代码
+2、 【 make defconfig 】                  似乎不需要输入该代码
 
-2、 ./scripts/diffconfig.sh > seed.text   生成差异文件
+2、 【 ./scripts/diffconfig.sh > seed.text 】   生成差异文件
 
-3、 cat seed.text 直接在屏幕输出差异代码，贴入config文件中
+3、 【 cat seed.text 】 直接在屏幕输出差异代码，贴入config文件中
 OR
-mv seed.text config/  生成text文件上传。
+【 mv seed.text config/ 】  生成text文件上传。
 
 遇到的坑：
 
