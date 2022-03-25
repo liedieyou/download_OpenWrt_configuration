@@ -94,7 +94,7 @@ jobs:
       uses: actions/upload-artifact@main
       with:
         name: OpenWrt_configseed
-        path: openwrt/config/seed.config
+        path: openwrt/config/seed.txt
 
 
     - name: Delete workflow runs
