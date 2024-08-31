@@ -19,3 +19,6 @@
 
 ##添加自己的插件库
 echo -e "\nsrc-git extraipk https://github.com/liedieyou/OpenWrt-Packages" >> feeds.conf.default
+
+##turboacc需要特殊处理
+curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh --no-sfe
