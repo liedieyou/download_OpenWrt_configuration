@@ -91,7 +91,7 @@ jobs:
 
     #不使用配置图形化界面，直接导出默认
     - name: SSH connection not Actions
-      if: (github.event.inputs.ssh  = 'false') 
+      if: (github.event.inputs.ssh  == 'false') 
       run: |
         cd openwrt
         make defconfig
