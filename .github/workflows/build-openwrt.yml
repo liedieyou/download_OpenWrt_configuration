@@ -89,12 +89,20 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
+    #不使用配置图形化界面，直接导出默认
+    - name: SSH connection not Actions
+      if: (github.event.inputs.ssh  = 'false') 
+      run: |
+        cd openwrt
+        make defconfig
+
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
       with:
         name: OpenWrt_configseed
-        path: openwrt/config/seed.txt
+        #path: openwrt/config/seed.txt
+        path: openwrt/.config
 
 
     - name: Delete workflow runs
